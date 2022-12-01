@@ -2,7 +2,6 @@ import * as path from 'path';
 import * as dotenv from 'dotenv';
 
 import Express from './Express';
-import App from './App';
 
 class Server {
   // Clear the console

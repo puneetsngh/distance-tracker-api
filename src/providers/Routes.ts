@@ -1,5 +1,5 @@
 import { Application } from 'express';
-import Locals from './App';
+import App from './App';
 import apiRouter from './../routes/Api';
 
 class Routes {
@@ -10,7 +10,7 @@ class Routes {
   }
 
   public mountApi(_express: Application): Application {
-    const apiPrefix = Locals.config().apiPrefix;
+    const apiPrefix = App.config().apiPrefix;
     console.log('Routes :: Mounting API Routes...');
 
     return _express.use(`/${apiPrefix}`, apiRouter);
