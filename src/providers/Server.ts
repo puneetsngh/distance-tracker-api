@@ -9,17 +9,9 @@ class Server {
     process.stdout.write('\x1B[2J\x1B[0f');
   }
 
-  // Loads your dotenv file
-  public loadConfiguration(): void {
-    console.log('Configuration :: Booting @ Master...');
-
-    dotenv.config({ path: path.join(__dirname, '../../.env') });
-  }
-
   // Loads your Server
   public loadServer(): void {
-    console.log('Server :: Booting @ Master...');
-
+    console.log('Server :: Starting...');
     Express.init();
   }
 

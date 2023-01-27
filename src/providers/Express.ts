@@ -2,6 +2,7 @@ import express from 'express';
 import App from './App';
 import Routes from './Routes';
 import ExceptionHandler from '../exceptions/Handler';
+import requestLogger from '../middlewares/pino';
 
 class Express {
   /**
@@ -14,13 +15,13 @@ class Express {
    */
   constructor() {
     this.express = express();
-
     this.mountDotEnv();
     this.mountRoutes();
   }
 
   private mountDotEnv(): void {
     this.express = App.init(this.express);
+    this.express.use(requestLogger);
   }
   /**
    * Mounts all the defined routes
@@ -44,6 +45,7 @@ class Express {
 
     // Start the server on the specified port
     this.express.listen(port, () => {
+      console.log('App Name :: ' + this.express.locals.app.name + ' | App Env :: ' + process.env.NODE_ENV);
       return console.log('\x1b[33m%s\x1b[0m', `Server Running 'http://localhost:${port}'`);
     }).on('error', (_error) => {
       return console.log('Error: ', _error.message);

@@ -8,18 +8,11 @@ class App {
 
     const url = process.env.APP_URL || `http://localhost:${process.env.PORT}`;
     const port = process.env.PORT || 3000;
-    const mongooseUrl = process.env.MONGOOSE_URL;
     const name = process.env.APP_NAME || 'App';
 
-    const redisHttpPort = process.env.REDIS_QUEUE_PORT || 6379;
-    const redisHttpHost = process.env.REDIS_QUEUE_HOST || '127.0.0.1';
-
     return {
-      mongooseUrl,
       name,
       port,
-      redisHttpPort,
-      redisHttpHost,
       url,
     };
   }
